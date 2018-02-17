@@ -14,6 +14,7 @@
       <a class="main-nav__logo" href="/"></a>
     </nav>
 
+
     <main class="content">
       <%= if message=get_flash(@conn, :info) do %>
         <p class="alert alert-info" role="alert"><%= message %></p>
@@ -22,8 +23,11 @@
       <%= if message=get_flash(@conn, :error) do %>
         <p class="alert alert-danger" role="alert"><%= message %></p>
       <% end %>
-      
+
       <%= render @view_module, @view_template, assigns %>
+      
+      <p><%= link "Brett Sanders", to: "https://github.com/brettsanders?todaydate=#{Date.utc_today()}" %></p>
+      <p> <%= link "Today is #{Date.utc_today()}", to: "https://www.worldtimezone.com/", q: "yeah " %></p>
     </main>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
