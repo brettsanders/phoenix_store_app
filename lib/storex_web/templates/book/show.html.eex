@@ -1,3 +1,4 @@
+<%= link "Back", to: book_path(@conn, :index) %>
 <h1><%= @book.title %></h1>
 <div class="book book­hero">
   <img class="book__image" src="<%= @book.image_url %>">
