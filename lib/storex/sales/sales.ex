@@ -45,4 +45,9 @@ defmodule Storex.Sales do
     |> preload(:book)
     |> Repo.all()
   end
+
+
+  def line_items_quantity_count(items) do
+    Enum.reduce(items, 0, fn(item, acc) -> acc + item.quantity end)
+  end
 end

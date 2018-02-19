@@ -83,5 +83,31 @@ defmodule Storex.SalesTest do
       [line_item2] = Sales.list_line_items(cart2)
       assert line_item2.book == book2
     end
+
+    test "line_items_quantity_count/1 returns the total quantity of items" do
+      {:ok, book1} = Store.create_book(%{
+        title: "Title",
+        description: "Description",
+        image_url: "product.jpg",
+        price: "29.90"
+      })
+
+      {:ok, book2} = Store.create_book(%{
+        title: "Title 2",
+        description: "Description 2",
+        image_url: "product.jpg",
+        price: "39.90"
+      })
+
+      {:ok, cart} = Sales.create_cart()
+
+      Sales.add_book_to_cart(book1, cart)
+      Sales.add_book_to_cart(book1, cart)
+      Sales.add_book_to_cart(book2, cart)
+
+      line_items = Sales.list_line_items(cart)
+
+      assert Sales.line_items_quantity_count(line_items) == 3
+    end
   end
 end
