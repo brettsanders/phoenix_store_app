@@ -5,7 +5,7 @@ defmodule Storex.Sales.Cart do
 
 
   schema "sales_carts" do
-
+    has_many :line_items, Storex.Sales.LineItem
     timestamps()
   end
 
