@@ -38,4 +38,11 @@ defmodule Storex.Sales do
       Repo.delete!(line_item)
     end
   end
+
+  def list_line_items(cart) do
+    LineItem
+    |> where(cart_id: ^cart.id)
+    |> preload(:book)
+    |> Repo.all()
+  end
 end

@@ -56,5 +56,32 @@ defmodule Storex.SalesTest do
       end
     end
 
+    test "list_line_items/1 list items that belong to a cart" do
+      {:ok, book1} = Store.create_book(%{
+        title: "Title",
+        description: "Description",
+        image_url: "product.jpg",
+        price: "29.90"
+      })
+
+      {:ok, book2} = Store.create_book(%{
+        title: "Title 2",
+        description: "Description 2",
+        image_url: "product.jpg",
+        price: "39.90"
+      })
+
+      {:ok, cart1} = Sales.create_cart()
+      {:ok, cart2} = Sales.create_cart()
+
+      Sales.add_book_to_cart(book1, cart1)
+      Sales.add_book_to_cart(book2, cart2)
+
+      [line_item1] = Sales.list_line_items(cart1)
+      assert line_item1.book == book1
+
+      [line_item2] = Sales.list_line_items(cart2)
+      assert line_item2.book == book2
+    end
   end
 end
