@@ -8,4 +8,8 @@ defmodule Storex.Sales do
     |> Cart.changeset(attrs)
     |> Repo.insert()
   end
+
+  def get_cart!(id) do
+    Repo.get!(Cart, id)
+  end
 end

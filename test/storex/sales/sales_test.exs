@@ -8,5 +8,10 @@ defmodule Storex.SalesTest do
     test "create_cart/0 creates a cart" do
       assert {:ok, %{}} = Sales.create_cart()
     end
+
+    test "get_cart!/1" do
+      {:ok, cart} = Sales.create_cart()
+      assert Sales.get_cart!(cart.id) == cart
+    end
   end
 end
