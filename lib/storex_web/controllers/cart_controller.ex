@@ -7,7 +7,7 @@ defmodule StorexWeb.CartController do
     cart = Plugs.Cart.get(conn)
     items = Sales.list_line_items(cart)
     total = Sales.line_items_total_price(items)
-    render conn, "index.html", items: items, total: total
+    render conn, "show.html", items: items, total: total
   end
 
   def create(conn, %{"book_id" => book_id}) do
