@@ -17,7 +17,7 @@
         <%= if items_count(@conn) do %>
           <li>
             <%= link to: cart_path(@conn, :show) do %>
-              cart <span class="badge"><%= items_count(@conn) %></span> (<%= items_total_price(@conn) %>)
+              cart <span class="badge"><%= items_count(@conn) %></span> (<%= format_price(items_total_price(@conn)) %>)
             <% end %>
           </li>
         <% end %>

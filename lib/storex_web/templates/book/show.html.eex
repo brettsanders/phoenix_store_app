@@ -7,7 +7,7 @@
 </p> </div>
 <div class="value­tag">
   <h2 class="value­tag__title">price</h2>
-  <span class="value­tag__content"><%= @book.price %></span>
+  <span class="value­tag__content"><%= format_price(@book.price) %></span>
 </div>
 <%= link "Add to cart",
       to: cart_path(@conn, :create, book_id: @book.id),
