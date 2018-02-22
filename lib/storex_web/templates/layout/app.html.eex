@@ -17,7 +17,7 @@
         <%= if items_count(@conn) do %>
           <li>
             <%= link to: cart_path(@conn, :show) do %>
-              cart <span class="badge"><%= items_count(@conn) %></span>
+              cart <span class="badge"><%= items_count(@conn) %></span> (<%= items_total_price(@conn) %>)
             <% end %>
           </li>
         <% end %>
@@ -34,9 +34,6 @@
       <% end %>
 
       <%= render @view_module, @view_template, assigns %>
-
-      <!-- <p><%= link "Brett Sanders", to: "https://github.com/brettsanders?todaydate=#{Date.utc_today()}" %></p>
-      <p> <%= link "Today is #{Date.utc_today()}", to: "https://www.worldtimezone.com/", q: "yeah " %></p> -->
     </main>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
