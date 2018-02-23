@@ -39,5 +39,16 @@ defmodule Storex.AccountsTest do
       {:error, changeset} = Accounts.create_user(duplicated_email_attrs)
       assert "has already been taken" in errors_on(changeset).email
     end
+
+    test "get_user!/1 returns a user" do
+      fixture = user_fixture()
+      user = Accounts.get_user!(fixture.id)
+
+      assert user.id == fixture.id
+    end
+
+    test "new_user/0 returns an empty changeset" do
+      assert %Ecto.Changeset{} = Accounts.new_user()
+    end
   end
 end
