@@ -10,6 +10,7 @@ defmodule StorexWeb.Router do
     plug StorexWeb.Plugs.Cart
     plug StorexWeb.Plugs.ItemsCount
     plug StorexWeb.Plugs.ItemsTotalPrice
+    plug StorexWeb.Plugs.CurrentUser
   end
 
   pipeline :api do
