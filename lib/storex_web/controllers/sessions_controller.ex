@@ -2,6 +2,7 @@ defmodule StorexWeb.SessionController do
   use StorexWeb, :controller
   alias Storex.Accounts
   alias StorexWeb.Plugs.CurrentUser
+  alias StorexWeb.Plugs.Cart
 
   def new(conn, _params) do
     render(conn, "new.html")
@@ -20,5 +21,12 @@ defmodule StorexWeb.SessionController do
         |> put_flash(:error, "Unable to sign in")
         |> render("new.html")
     end
+  end
+
+  def delete(conn, _params) do
+    conn
+    |> delete_session(:user_id)
+    |> Cart.forget()
+    |> redirect(to: "/")
   end
 end
