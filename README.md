@@ -22,3 +22,4 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 ## Useful Links
 
   * Debugging: https://medium.com/@diamondgfx/debugging-phoenix-with-iex-pry-5417256e1d11
+  * Authentication: http://nithinbekal.com/posts/phoenix-authentication/
