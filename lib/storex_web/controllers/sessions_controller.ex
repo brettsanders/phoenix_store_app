@@ -25,7 +25,7 @@ defmodule StorexWeb.SessionController do
 
   def delete(conn, _params) do
     conn
-    |> delete_session(:user_id)
+    |> CurrentUser.forget()
     |> Cart.forget()
     |> redirect(to: "/")
   end
