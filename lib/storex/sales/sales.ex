@@ -1,7 +1,7 @@
 defmodule Storex.Sales do
   import Ecto.Query, warn: false
   alias Storex.Repo
-  alias Storex.Sales.{Cart, LineItem}
+  alias Storex.Sales.{Cart, LineItem, Order}
 
   def create_cart(attrs \\ %{}) do
     %Cart{}
@@ -57,5 +57,9 @@ defmodule Storex.Sales do
 
       Decimal.add(acc, partial)
     end)
+  end
+
+  def new_order() do
+    Order.changeset(%Order{}, %{})
   end
 end

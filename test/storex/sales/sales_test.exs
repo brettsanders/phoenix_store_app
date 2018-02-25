@@ -108,6 +108,12 @@ defmodule Storex.SalesTest do
 
       assert Sales.line_items_total_price(line_items) == Decimal.new("35.00")
     end
-
   end
+
+  describe "orders" do
+    test "new_order/0 returns an empty changeset" do
+      assert %Ecto.Changeset{} = Sales.new_order()
+    end
+  end
+
 end

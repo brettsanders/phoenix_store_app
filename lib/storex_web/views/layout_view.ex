@@ -1,6 +1,5 @@
 defmodule StorexWeb.LayoutView do
   use StorexWeb, :view
-  alias Storex.Sales
   import StorexWeb.Helpers.PriceFormatter
 
   def items_count(conn) do
